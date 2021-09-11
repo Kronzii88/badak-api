@@ -9,6 +9,7 @@ const ticketHandler = require("../handler/ticket");
 
 // endpoint for user
 router.post("/register", userHandler.register);
+router.post("/login", userHandler.login);
 // endpoint for organization
 
 // endpoint for event

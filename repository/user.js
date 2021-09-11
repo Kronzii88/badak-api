@@ -8,6 +8,11 @@ function register(data) {
   return userModel.create(data);
 }
 
+function login(email) {
+  return userModel.findOne({ email }).lean();
+}
+
 module.exports = {
   register,
+  login,
 };

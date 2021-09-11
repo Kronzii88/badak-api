@@ -5,6 +5,12 @@ async function register(data) {
   return newData;
 }
 
+async function login(email) {
+  let data = await repositoryUser.login(email);
+  return data;
+}
+
 module.exports = {
   register,
+  login,
 };
