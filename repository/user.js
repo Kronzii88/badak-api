@@ -1,10 +1,17 @@
 const { userModel } = require("../datastore/mongo/model/badak");
 const uuid = require("uuid");
 
-function register(data) {
+function registerCustomer(data) {
   console.log(data);
   data["user_id"] = uuid.v4();
   data["user_type"] = "customer";
+  return userModel.create(data);
+}
+
+function registerOrganizer(data) {
+  console.log(data);
+  data["user_id"] = uuid.v4();
+  data["user_type"] = "organizer";
   return userModel.create(data);
 }
 
@@ -13,6 +20,7 @@ function login(email) {
 }
 
 module.exports = {
-  register,
+  registerCustomer,
+  registerOrganizer,
   login,
 };

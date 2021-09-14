@@ -1,7 +1,12 @@
 const repositoryUser = require("../repository/user");
 
-async function register(data) {
-  let newData = await repositoryUser.register(data);
+async function registerCustomer(data) {
+  let newData = await repositoryUser.registerCustomer(data);
+  return newData;
+}
+
+async function registerOrganizer(data) {
+  let newData = await repositoryUser.registerOrganizer(data);
   return newData;
 }
 
@@ -11,6 +16,7 @@ async function login(email) {
 }
 
 module.exports = {
-  register,
+  registerCustomer,
+  registerOrganizer,
   login,
 };

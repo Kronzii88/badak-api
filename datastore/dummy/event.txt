@@ -1,0 +1,15 @@
+{
+    event_name: "Seminar Teknologi",
+    event_desc: "Seminar Teknologi Contoh",
+    event_start: "2021-12-21T10:00:00Z",
+    event_end: "2021-12-21T13:00:00Z",
+    location: "Jalan Seminar Utara",
+    ticketing: {
+        ticket_name: "Golden Ticket",
+        ticket_desc: "Spesial Tiket",
+        price: 20000,
+        quantity: 100,
+        sales_start: "2021-10-31T20:00:00Z",
+        sales_end: "2021-12-20T20:00:00Z",
+    }
+}

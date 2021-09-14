@@ -12,7 +12,7 @@ const JWT_SECRET =
  *
  * for registering the user
  */
-async function register(req, res) {
+async function registerCustomer(req, res) {
   const { username, email, password } = req.body;
 
   if (!username || typeof username !== "string") {
@@ -35,7 +35,41 @@ async function register(req, res) {
 
   console.log(req.body);
   try {
-    let data = await serviceUser.register(req.body);
+    let data = await serviceUser.registerCustomer(req.body);
+    res.status(200).json(data);
+  } catch (error) {
+    if (error.code === 11000) {
+      return res.status(400).json({
+        message: "email already in use",
+      });
+    }
+  }
+}
+
+async function registerOrganizer(req, res) {
+  const { username, email, password } = req.body;
+
+  if (!username || typeof username !== "string") {
+    return res.status(400).json({
+      message: "Invalid username",
+    });
+  }
+
+  if (!email || typeof email !== "string") {
+    return res.status(400).json({
+      message: "Invalid email",
+    });
+  }
+
+  if (!password || typeof password !== "string") {
+    return res.status(400).json({
+      message: "Invalid password",
+    });
+  }
+
+  console.log(req.body);
+  try {
+    let data = await serviceUser.registerOrganizer(req.body);
     res.status(200).json(data);
   } catch (error) {
     if (error.code === 11000) {
@@ -86,6 +120,7 @@ async function login(req, res) {
 }
 
 module.exports = {
-  register,
+  registerCustomer,
+  registerOrganizer,
   login,
 };

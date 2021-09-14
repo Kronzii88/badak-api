@@ -1,0 +1,15 @@
+for register
+
+{
+    username: "user1",
+    email: "user1@email.com",
+    password: "passuser1"
+}
+
+for login
+
+{
+    email: "user1@email.com",
+    password: "passuser1"
+}
+
