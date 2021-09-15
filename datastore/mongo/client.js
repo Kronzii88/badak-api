@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const config = require("../../application/config");
 
 function createClient() {
-  return mongoose.connect(`${config.mongo.uri}/${config.mongo.dbName}`, {
+  return mongoose.connect(config.mongo.uri, {
     authSource: config.mongo.authSource,
     useNewUrlParser: true,
     useUnifiedTopology: true,

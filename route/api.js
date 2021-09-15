@@ -5,6 +5,8 @@ const router = express.Router();
 const userHandler = require("../handler/user");
 const eventHandler = require("../handler/event");
 
+// test on heroku
+
 // endpoint for user
 router.post("/register-customer", userHandler.registerCustomer);
 router.post("/register-organizer", userHandler.registerOrganizer);
