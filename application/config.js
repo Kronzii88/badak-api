@@ -3,12 +3,11 @@ dotenv.config();
 
 module.exports = {
   application: {
-    port: process.env.APP_PORT,
+    port: process.env.PORT,
     env: process.env.NODE_ENV,
   },
   mongo: {
-    uri: process.env.MONGODB_URI,
-    dbName: process.env.MONGODB_NAME,
+    uri: process.env.MONGODB_CONNECTION_STRING,
     authSource: process.env.MONGODB_AUTHSOURCE,
   },
 };
