@@ -7,7 +7,7 @@ module.exports = {
     env: process.env.NODE_ENV,
   },
   mongo: {
-    uri: process.env.MONGODB_CONNECTION_STRING,
+    uri: process.env.MONGODB_URI,
     authSource: process.env.MONGODB_AUTHSOURCE,
   },
 };
