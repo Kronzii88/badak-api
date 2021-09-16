@@ -67,6 +67,35 @@ const userSchema = new mongoose.Schema(
 );
 
 // const organizationSchema = new mongoose.Schema({});
+const ticketSchema = new mongoose.Schema({
+  ticket_name: {
+    type: String,
+    required: true,
+  },
+  ticket_desc: {
+    type: String,
+    required: true,
+  },
+  price: {
+    type: Number,
+    required: true,
+  },
+  quantity: {
+    type: Number,
+    required: true,
+  },
+  sales_start: {
+    type: Date,
+    required: true,
+  },
+  sales_end: {
+    type: Date,
+    required: true,
+  },
+  ticket_status: {
+    type: String,
+  },
+});
 
 const eventSchema = new mongoose.Schema({
   event_id: {
@@ -102,41 +131,10 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
   ticketing: {
-    type: Object({
-      ticket_name: {
-        type: String,
-        required: true,
-      },
-      ticket_desc: {
-        type: String,
-        required: true,
-      },
-      price: {
-        type: Number,
-        required: true,
-      },
-      quantity: {
-        type: Number,
-        required: true,
-      },
-      sales_start: {
-        type: Date,
-        required: true,
-      },
-      sales_end: {
-        type: Date,
-        required: true,
-      },
-      ticket_status: {
-        type: String,
-        required: true,
-      },
-    }),
+    type: [ticketSchema],
     required: true,
   },
 });
-
-// const ticketSchema = new mongoose.Schema({});
 
 module.exports = {
   userModel: mongoose.model("User", userSchema, "user"),
