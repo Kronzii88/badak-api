@@ -5,6 +5,7 @@ function save(data) {
   console.log(data);
   data["event_id"] = uuid.v4();
   data["event_status"] = "draft";
+  data["ticketing.ticket_status"] = "on sale";
   return eventModel.create(data);
 }
 
