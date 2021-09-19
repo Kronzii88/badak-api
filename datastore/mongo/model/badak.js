@@ -110,9 +110,8 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  event_desc: {
+  location: {
     type: String,
-    required: true,
   },
   event_start: {
     type: Date,
@@ -122,11 +121,15 @@ const eventSchema = new mongoose.Schema({
     type: Date,
     required: true,
   },
-  location: {
+  event_status: {
     type: String,
     required: true,
   },
-  event_status: {
+  event_image: {
+    type: String,
+    required: true,
+  },
+  event_desc: {
     type: String,
     required: true,
   },

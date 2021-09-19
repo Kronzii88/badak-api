@@ -1,11 +1,12 @@
 const { eventModel } = require("../datastore/mongo/model/badak");
 const uuid = require("uuid");
+// const { uploadImage } = require("../handler/event");
 
 function save(data) {
   console.log(data);
   data["event_id"] = uuid.v4();
   data["event_status"] = "draft";
-  data["ticketing.ticket_status"] = "on sale";
+  // data["ticketing.ticket_status"] = "on sale";
   return eventModel.create(data);
 }
 
