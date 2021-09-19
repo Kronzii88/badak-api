@@ -133,10 +133,10 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // ticketing: {
-  //   type: [ticketSchema],
-  //   required: true,
-  // },
+  ticketing: {
+    type: [ticketSchema],
+    required: true,
+  },
 });
 
 module.exports = {
