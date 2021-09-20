@@ -71,7 +71,29 @@ async function getDrafted(req, res) {
   res.status(200).json(data);
 }
 
-//for upload image
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ *
+ * for searching by id and get detailed event
+ */
+async function getById(req, res) {
+  let data = await serviceEvent.getById(req.params.event_id);
+  if (!data)
+    return res.status(404).json({
+      message: "data not found",
+    });
+
+  res.status(200).json(data);
+}
+
+/**
+ *
+ * @param {*} req
+ * @param {*} res
+ * example for upload image on firestorage
+ */
 async function uploadImage(req, res) {
   const alloweFileType = ["image/png", "image/jpeg"];
   const splitNameFile = req.file.originalname.split(".");
@@ -108,4 +130,5 @@ module.exports = {
   getPublished,
   getDrafted,
   uploadImage,
+  getById,
 };

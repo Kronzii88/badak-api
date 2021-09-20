@@ -26,9 +26,14 @@ function findDrafted() {
   });
 }
 
+function findById(event_id) {
+  return eventModel.findOne({ event_id });
+}
+
 module.exports = {
   save,
   findAll,
   findPublished,
   findDrafted,
+  findById,
 };

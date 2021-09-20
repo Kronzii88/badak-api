@@ -20,9 +20,15 @@ async function getDrafted() {
   return data;
 }
 
+async function getById(event_id) {
+  let data = await repositoryEvent.findById(event_id);
+  return data;
+}
+
 module.exports = {
   create,
   getAll,
   getPublished,
   getDrafted,
+  getById,
 };
