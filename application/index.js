@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const config = require("./config");
 const morgan = require("morgan");
@@ -25,6 +26,7 @@ async function start() {
   else {
     app.use(morgan("dev"));
   }
+  app.use(cors());
 
   // routing
   app.use("/api/v1", apiRoutes);

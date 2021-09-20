@@ -1,3 +1,4 @@
+const { func } = require("joi");
 const repositoryUser = require("../repository/user");
 
 async function registerCustomer(data) {
@@ -15,8 +16,14 @@ async function login(email) {
   return data;
 }
 
+async function updateOrganizer(data) {
+  let newData = await repositoryUser.updateOrganizer(data);
+  return newData;
+}
+
 module.exports = {
   registerCustomer,
   registerOrganizer,
   login,
+  updateOrganizer,
 };

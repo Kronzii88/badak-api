@@ -119,8 +119,20 @@ async function login(req, res) {
   }
 }
 
+async function updateOrganizer(req, res) {
+  let data = await serviceUser.updateOrganizer(req.body);
+
+  if (!data)
+    return res.status(400).json({
+      message: "data not found",
+    });
+
+  return res.status(200).json(data);
+}
+
 module.exports = {
   registerCustomer,
   registerOrganizer,
   login,
+  updateOrganizer,
 };

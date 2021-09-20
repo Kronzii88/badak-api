@@ -19,8 +19,21 @@ function login(email) {
   return userModel.findOne({ email }).lean();
 }
 
+async function updateOrganizer(data) {
+  const newData = await userModel.findOne({ user_id: data.user_id });
+  if (!newData) return null;
+
+  newData.organizer.logo = data.logo;
+  newData.organizer.organization_name = data.organization_name;
+  newData.organizer.organization_address = data.organization_address;
+  newData.organizer.organization_phone = data.organization_phone;
+
+  return newData.save();
+}
+
 module.exports = {
   registerCustomer,
   registerOrganizer,
   login,
+  updateOrganizer,
 };
