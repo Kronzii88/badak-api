@@ -30,7 +30,6 @@ const userSchema = new mongoose.Schema(
     },
     user_type: {
       type: String,
-      required: true,
     },
     pic_ktp: {
       type: String,

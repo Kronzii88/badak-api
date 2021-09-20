@@ -1,6 +1,8 @@
 const serviceUser = require("../service/user");
 const jwt = require("jsonwebtoken");
 // const bcrypt = require('bcrypt');
+const uuid = require("uuid");
+const firebaseStorage = require("../lib/firebase-storage");
 
 const JWT_SECRET =
   "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
@@ -120,10 +122,31 @@ async function login(req, res) {
 }
 
 async function updateOrganizer(req, res) {
-  let data = await serviceUser.updateOrganizer(req.body);
+  let image_url;
+  // console.log(req.body);
+  // console.log(req.file);
 
+  const alloweFileType = ["image/png", "image/jpeg"];
+  const splitNameFile = req.file.originalname.split(".");
+  const formatFile = splitNameFile[splitNameFile.length - 1];
+
+  if (alloweFileType.includes(req.file.mimetype)) {
+    const image = await firebaseStorage.upload(
+      req.file.buffer,
+      `image/${uuid.v4()}.${formatFile}`
+    );
+
+    image_url = image.publicUrl;
+    req.body["logo"] = image_url;
+  }
+
+  // console.log(image_url);
+  let data = req.body;
+  // console.log(data);
+
+  await serviceUser.updateOrganizer(data);
   if (!data)
-    return res.status(400).json({
+    return res.status(404).json({
       message: "data not found",
     });
 

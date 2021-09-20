@@ -13,6 +13,7 @@ const eventHandler = require("../handler/event");
 router.post("/register-customer", userHandler.registerCustomer);
 router.post("/register-organizer", userHandler.registerOrganizer);
 router.post("/login", userHandler.login);
+router.put("/organizer", upload.single("logo"), userHandler.updateOrganizer);
 
 // endpoint for event
 router.post("/event", upload.single("event_image"), eventHandler.create);

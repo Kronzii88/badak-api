@@ -19,6 +19,8 @@ async function login(email) {
 async function updateOrganizer(data) {
   let newData = await repositoryUser.updateOrganizer(data);
   return newData;
+  // console.log(newData);
+  // console.log(data);
 }
 
 module.exports = {
