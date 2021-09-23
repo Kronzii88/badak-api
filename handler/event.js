@@ -65,13 +65,13 @@ async function getAll(req, res) {
 }
 
 async function getPublished(req, res) {
-  await serviceEvent.getPublished();
-  // if (!data) {
-  //   res.status(404).json({
-  //     message: "data not found",
-  //   });
-  // }
-  // res.status(200).json(data);
+  let data = await serviceEvent.getPublished();
+  if (!data) {
+    res.status(404).json({
+      message: "data not found",
+    });
+  }
+  res.status(200).json(data);
 }
 
 async function getDrafted(req, res) {
@@ -81,7 +81,6 @@ async function getDrafted(req, res) {
       message: "data not found",
     });
   }
-
   res.status(200).json(data);
 }
 

@@ -19,8 +19,8 @@ router.post("/event", upload.single("event_image"), eventHandler.create);
 router.put("/event/publish", eventHandler.publishEvent);
 router.get("/event", eventHandler.getAll);
 router.get("/event/:event_id", eventHandler.getById);
-router.get("/event/published", eventHandler.getPublished);
-router.get("/event/drafted", eventHandler.getDrafted);
+router.get("/event-published", eventHandler.getPublished);
+router.get("/event-drafted", eventHandler.getAll);
 
 // endpoint for order
 router.get("/order", orderHandler.getAllOrder);

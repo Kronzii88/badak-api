@@ -16,11 +16,12 @@ async function getAll() {
 }
 
 async function getPublished() {
-  await repositoryEvent.findPublished();
+  let data = await repositoryEvent.findPublished();
+  return data;
 }
 
 async function getDrafted() {
-  let data = await repositoryEvent.findDrafted();
+  let data = await repositoryEvent.getDrafted();
   return data;
 }
 

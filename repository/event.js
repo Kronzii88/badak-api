@@ -22,26 +22,27 @@ function findAll() {
   return eventModel.find();
 }
 
-async function findPublished() {
-  const data = await eventModel
+function findPublished() {
+  return eventModel
     .find({
       event_status: "published",
     })
     .exec();
-
-  console.log(data);
 }
 
 function findDrafted() {
-  return eventModel.find({
-    event_status: "draft",
-  });
+  return eventModel
+    .find({
+      event_status: "draft",
+    })
+    .exec();
 }
 
 function findById(event_id) {
   return eventModel.findOne({ event_id });
 }
 
+// console.log(findAll());
 module.exports = {
   save,
   findAll,
