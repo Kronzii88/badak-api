@@ -40,6 +40,20 @@ async function create(req, res) {
   }
 }
 
+//put
+async function publishEvent(req, res) {
+  let data = req.body;
+  console.log(data);
+
+  await serviceEvent.publishEvent(data);
+  if (!data)
+    return res.status(404).json({
+      message: "data not found",
+    });
+
+  return res.status(200).json(data);
+}
+
 async function getAll(req, res) {
   let data = await serviceEvent.getAll();
   if (!data) {
@@ -51,13 +65,13 @@ async function getAll(req, res) {
 }
 
 async function getPublished(req, res) {
-  let data = await serviceEvent.getPublished();
-  if (!data) {
-    res.status(404).json({
-      message: "data not found",
-    });
-  }
-  res.status(200).json(data);
+  await serviceEvent.getPublished();
+  // if (!data) {
+  //   res.status(404).json({
+  //     message: "data not found",
+  //   });
+  // }
+  // res.status(200).json(data);
 }
 
 async function getDrafted(req, res) {
@@ -71,13 +85,6 @@ async function getDrafted(req, res) {
   res.status(200).json(data);
 }
 
-/**
- *
- * @param {*} req
- * @param {*} res
- *
- * for searching by id and get detailed event
- */
 async function getById(req, res) {
   let data = await serviceEvent.getById(req.params.event_id);
   if (!data)
@@ -88,47 +95,17 @@ async function getById(req, res) {
   res.status(200).json(data);
 }
 
-/**
- *
- * @param {*} req
- * @param {*} res
- * example for upload image on firestorage
- */
-async function uploadImage(req, res) {
-  const alloweFileType = ["image/png", "image/jpeg"];
-  const splitNameFile = req.file.originalname.split(".");
-  const formatFile = splitNameFile[splitNameFile.length - 1];
+// put
+async function update(req, res) {}
 
-  if (alloweFileType.includes(req.file.mimetype)) {
-    const image = await firebaseStorage.upload(
-      req.file.buffer,
-      `image/${uuid.v4()}.${formatFile}`
-    );
-
-    // todo something
-    // res.status(200).json({
-    //   result: {
-    //     image: image.image,
-    //     url: image.publicUrl,
-    //   },
-    // });
-
-    return res.json({
-      url: image.publicUrl,
-    });
-  }
-
-  res.status(400).json({
-    status: 400,
-    message: "upload file failed",
-  });
-}
+//put
+async function addTicket(req, res) {}
 
 module.exports = {
   create,
   getAll,
   getPublished,
   getDrafted,
-  uploadImage,
   getById,
+  publishEvent,
 };

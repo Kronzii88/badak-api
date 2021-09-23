@@ -23,10 +23,6 @@ async function updateOrganizer(data) {
   let newData = await userModel.findOne({ user_id: data.user_id });
   if (!newData) return null;
 
-  // data["organizer.organization_name"] = data.organization_name;
-  // data["organizer.organization_address"] = data.organization_address;
-  // data["organizer.organization_phone"] = data.organization_phone;
-  // data["organizer.logo"] = data.logo;
   newData["organizer"] = {
     organization_name: data.organization_name,
     logo: data.logo,

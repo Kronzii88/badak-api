@@ -4,8 +4,8 @@ const jwt = require("jsonwebtoken");
 const uuid = require("uuid");
 const firebaseStorage = require("../lib/firebase-storage");
 
-const JWT_SECRET =
-  "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
+// const JWT_SECRET =
+//   "sdjkfh8923yhjdksbfma@#*(&@*!^#&@bhjb2qiuhesdbhjdsfg839ujkdhfjk";
 
 /**
  *
@@ -107,7 +107,7 @@ async function login(req, res) {
           username: user.username,
           user_type: user.user_type,
         },
-        JWT_SECRET
+        process.env.JWT_SECRET
       );
       return res.status(200).json({
         user,
@@ -152,6 +152,8 @@ async function updateOrganizer(req, res) {
 
   return res.status(200).json(data);
 }
+
+async function updateUser(req, res) {}
 
 module.exports = {
   registerCustomer,

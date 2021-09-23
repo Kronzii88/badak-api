@@ -138,7 +138,51 @@ const eventSchema = new mongoose.Schema({
   },
 });
 
+const orderSchema = new mongoose.Schema(
+  {
+    order_id: {
+      type: String,
+      required: true,
+    },
+    user_id: {
+      type: String,
+      ref: "User",
+      required: true,
+    },
+    event_id: {
+      type: String,
+      ref: "Event",
+      required: true,
+    },
+    ticketing: [
+      {
+        ticket_id: {
+          type: String,
+          required: true,
+        },
+        ticket_name: {
+          type: String,
+        },
+        quantity: {
+          type: Number,
+          default: 1,
+        },
+      },
+    ],
+    price: {
+      type: Number,
+      required: true,
+    },
+    status: {
+      type: String,
+      default: "pending",
+    },
+  },
+  { timestamps: true }
+);
+
 module.exports = {
   userModel: mongoose.model("User", userSchema, "user"),
   eventModel: mongoose.model("Event", eventSchema, "event"),
+  orderModel: mongoose.model("Order", orderSchema, "order"),
 };

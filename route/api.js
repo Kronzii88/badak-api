@@ -6,8 +6,7 @@ const upload = multer();
 // import handler
 const userHandler = require("../handler/user");
 const eventHandler = require("../handler/event");
-
-// test on heroku
+const orderHandler = require("../handler/order");
 
 // endpoint for user
 router.post("/register-customer", userHandler.registerCustomer);
@@ -17,12 +16,14 @@ router.put("/organizer", upload.single("logo"), userHandler.updateOrganizer);
 
 // endpoint for event
 router.post("/event", upload.single("event_image"), eventHandler.create);
+router.put("/event/publish", eventHandler.publishEvent);
 router.get("/event", eventHandler.getAll);
 router.get("/event/:event_id", eventHandler.getById);
 router.get("/event/published", eventHandler.getPublished);
 router.get("/event/drafted", eventHandler.getDrafted);
 
-// for upload image
-router.post("/upload-image", upload.single("avatar"), eventHandler.uploadImage);
+// endpoint for order
+router.get("/order", orderHandler.getAllOrder);
+router.post("/order", orderHandler.createOrder);
 
 module.exports = router;

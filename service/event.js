@@ -5,14 +5,18 @@ async function create(data) {
   return newData;
 }
 
+async function publishEvent(data) {
+  let newData = await repositoryEvent.publishEvent(data);
+  return newData;
+}
+
 async function getAll() {
   let data = await repositoryEvent.findAll();
   return data;
 }
 
 async function getPublished() {
-  let data = await repositoryEvent.findPublished();
-  return data;
+  await repositoryEvent.findPublished();
 }
 
 async function getDrafted() {
@@ -31,4 +35,5 @@ module.exports = {
   getPublished,
   getDrafted,
   getById,
+  publishEvent,
 };
