@@ -9,6 +9,16 @@ function save(data) {
   return eventModel.create(data);
 }
 
+async function createTicket(data) {
+  const newData = await eventModel.findOne({ event_id: data.event_id });
+  if (!newData) return null;
+
+  const { event_id, ...others } = data;
+
+  newData["ticketing"].push(others);
+  return newData.save();
+}
+
 async function publishEvent(data) {
   const newData = await eventModel.findOne({ event_id: data.event_id });
   if (!newData) return null;
@@ -50,4 +60,5 @@ module.exports = {
   findDrafted,
   findById,
   publishEvent,
+  createTicket,
 };

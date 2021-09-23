@@ -16,6 +16,7 @@ router.put("/organizer", upload.single("logo"), userHandler.updateOrganizer);
 
 // endpoint for event
 router.post("/event", upload.single("event_image"), eventHandler.create);
+router.put("/event/ticket", eventHandler.createTicket);
 router.put("/event/publish", eventHandler.publishEvent);
 router.get("/event", eventHandler.getAll);
 router.get("/event/:event_id", eventHandler.getById);

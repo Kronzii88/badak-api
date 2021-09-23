@@ -5,6 +5,11 @@ async function create(data) {
   return newData;
 }
 
+async function createTicket(data) {
+  let newData = await repositoryEvent.createTicket(data);
+  return newData;
+}
+
 async function publishEvent(data) {
   let newData = await repositoryEvent.publishEvent(data);
   return newData;
@@ -37,4 +42,5 @@ module.exports = {
   getDrafted,
   getById,
   publishEvent,
+  createTicket,
 };

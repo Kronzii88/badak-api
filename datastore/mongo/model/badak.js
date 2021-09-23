@@ -93,6 +93,8 @@ const ticketSchema = new mongoose.Schema({
   },
   ticket_status: {
     type: String,
+    required: true,
+    default: "on sale",
   },
 });
 

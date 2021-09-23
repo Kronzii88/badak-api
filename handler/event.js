@@ -40,6 +40,19 @@ async function create(req, res) {
   }
 }
 
+async function createTicket(req, res) {
+  let data = req.body;
+  console.log(data);
+
+  await serviceEvent.createTicket(data);
+  if (!data)
+    return res.status(404).json({
+      message: "data not found",
+    });
+
+  return res.status(200).json(data);
+}
+
 //put
 async function publishEvent(req, res) {
   let data = req.body;
@@ -107,4 +120,5 @@ module.exports = {
   getDrafted,
   getById,
   publishEvent,
+  createTicket,
 };
